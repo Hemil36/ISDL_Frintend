@@ -21,7 +21,9 @@ import ProtectedRoute from './components/Auth';
 import Navbar from './components/Navbar';
 import Error404 from './pages/Error404';
 
-
+ function handler() {
+ console.log("Hello cron");
+}
 //   const location = useLocation();
 //   const isLoginPage = location.pathname === '/login';
 //   return (
@@ -91,6 +93,7 @@ function MainContent() {
         <Route path="/filters2" element={<TempShow2></TempShow2>}></Route>
         <Route path="/filters3" element={<TempShow3></TempShow3>}></Route>
         <Route path='*' element = {<Error404 />} />
+        <Route path="/cron" element ={handler} /></Route>
       </Routes>
             </LayoutWithSidebar>
           }
