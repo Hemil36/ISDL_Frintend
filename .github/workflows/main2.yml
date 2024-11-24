@@ -1,0 +1,21 @@
+name: Simulated Cron Every 10 Seconds
+
+on:
+  schedule:
+    - cron: "*/1 * * * *" # Runs every minute
+
+jobs:
+  simulated-cron:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Simulate Cron Job Every 10 Seconds
+      env:
+        TARGET_URL: https://your-url-here.com # Replace with your target URL
+      run: |
+        for i in {1..6}; do # Executes 6 requests every minute
+          curl -X POST "$TARGET_URL" \
+            -H "Content-Type: application/json" \
+            -d '{"message": "hello"}'
+          sleep 10
+        done
