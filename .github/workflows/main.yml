@@ -1,22 +1,18 @@
-name: Simulated 10-Second Interval POST Request
+name: Every Minute POST Request
 
 on:
-  workflow_dispatch: # Triggered manually or programmatically
   schedule:
-    - cron: "*/1 * * * *" # Runs every minute
+    - cron: "*/1 * * * *" # Triggers every minute
 
 jobs:
-  simulate-interval:
+  post-request:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run POST Request in Loop
+    - name: Send POST Request
       env:
-        TARGET_URL: https://webhook.site/0148c074-6680-43a5-9f23-5eb28229ac3c # Replace with your target URL
+        TARGET_URL: https://webhook.site/0148c074-6680-43a5-9f23-5eb28229ac3c
       run: |
-        for i in {1..6}; do # Runs 6 times in 1 minute (10 seconds each)
-          curl -X POST "$TARGET_URL" \
-            -H "Content-Type: application/json" \
-            -d '{"message": "hello"}'
-          sleep 10
-        done
+        curl -X POST "$TARGET_URL" \
+          -H "Content-Type: application/json" \
+          -d '{"message": "hello"}'
