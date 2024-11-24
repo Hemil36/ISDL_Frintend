@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Send POST Request
       env:
-        TARGET_URL: https://webhook.site/0148c074-6680-43a5-9f23-5eb28229ac3c# Replace with your target URL
+        TARGET_URL: https://webhook.site/0148c074-6680-43a5-9f23-5eb28229ac3c
       run: |
         curl -X POST "$TARGET_URL" \
           -H "Content-Type: application/json" \
